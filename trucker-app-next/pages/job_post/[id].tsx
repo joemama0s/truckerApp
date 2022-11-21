@@ -1,28 +1,38 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
+
+const fetcher = async (url: string) => {
+  console.log(url)
+  const res = await fetch(url)
+  const data = await res.json()
+
+  if (res.status !== 200) {
+    throw new Error(data.message)
+  }
+  return data
+}
 
 const Job_Post = () => {
-  const router = useRouter()
-  const { id } = router.query
-  console.log(id)
-  let name = "Keto Icecream"
-  let start = "Scottsdale"
-  let destination = "California"
-  if (id === "2"){
-    name = "Taylormade"
-    start = "Washington"
-    destination = "Texas"
-  }
+  const { query } = useRouter()
+  const { data, error } = useSWR(
+    () => query.id && `/api/jobs/${query.id}`,
+    fetcher
+  )
+
+  if (error) return <div>{error.message}</div>
+  if (!data) return <div>Loading...</div>
 
   return (
     <>
         <br></br>
         <Link href="/">Click me to Go Home</Link>
         <br></br>
-        <p>Post: {id}</p>
-        <p>Company: {name}</p>
-        <p>Staring Location: {start}</p>
-        <p>Destination: {destination}</p>
+        <p>Post: {query.id}</p>
+        <p>Name: {data.name}</p>
+        <p>Company: {data.company_name}</p>
+        <p>Staring Location: {data.starting_location}</p>
+        <p>Destination: {data.ending_location}</p>
     </>
   )
 }

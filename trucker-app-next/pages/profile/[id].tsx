@@ -1,28 +1,40 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
+
+
+const fetcher = async (url: string) => {
+  console.log(url)
+  const res = await fetch(url)
+  const data = await res.json()
+
+  if (res.status !== 200) {
+    throw new Error(data.message)
+  }
+  return data
+}
 
 const Profile = () => {
-  const router = useRouter()
-  const { id } = router.query
-  console.log(id)
-  let name = "Tyler"
-  let truck = "F250"
-  let verified = "true"
-  if (id === "2"){
-    name = "Ryan"
-    truck = "Semi Truck"
-    verified = "false"
-  }
+  const { query } = useRouter()
+  const { data, error } = useSWR(
+    () => query.id && `/api/profiles/${query.id}`,
+    fetcher
+  )
+
+  if (error) return <div>{error.message}</div>
+  if (!data) return <div>Loading...</div>
+
 
   return (
     <>
         <br></br>
         <Link href="/">Click me to Go Home</Link>
         <br></br>
-        <p>Profile: {id}</p>
-        <p>Name: {name}</p>
-        <p>Truck: {truck}</p>
-        <p>Verified Driver: {verified}</p>
+        <p>Profile ID: {data.id}</p>
+        <p>Name: {data.name}</p>
+        <p>Truck: {data.truck}</p>
+        <p>Verified Driver: {data.verified}</p>
+        <p>Rating: {data.rating}</p>
     </>
   )
 }
