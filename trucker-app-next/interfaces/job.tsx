@@ -1,7 +1,8 @@
 export type Job = {
-  id: string
-  name: string
-  company_name: string
-  starting_location: string
-  ending_location: string
-  }
+  id: number;
+  name: string;
+  starting_location: string;
+  ending_location: string;
+  employer_id: number;
+  accepted_by: number;
+};

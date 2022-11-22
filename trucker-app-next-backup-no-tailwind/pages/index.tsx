@@ -1,24 +1,11 @@
-import { useRouter } from "next/router";
-
 export default function Home() {
-  const router = useRouter();
-
   return (
-    <div>
-      <h1 className="text-3xl text-yellow-400 font-bold underline">
-        Its trucker time baby
-      </h1>
-      <button
-        onClick={() => {
-          router.push("/login");
-        }}
-        className="bg-blue-400 text-black-100 font-bold py-2 px-4 rounded border block"
-      >
-        Login
-      </button>
-    </div>
-  );
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
 }
+
 
 // import Head from 'next/head'
 // import Image from 'next/image'
