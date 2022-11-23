@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="yello-header">Its trucker time baby</h1>
+      <h1 className="yellow-header">Its trucker time baby</h1>
       <button
         onClick={() => {
           router.push("/login");
