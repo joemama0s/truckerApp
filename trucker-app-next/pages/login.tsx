@@ -1,23 +1,30 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { UserContext } from "../lib/context";
 
 export default function Login() {
   const router = useRouter();
   let loading = false;
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
+  const { username, setUsername, profileType, setProfileType } =
+    useContext(UserContext);
 
   // TODO Fix red underline
   function checkEmployeeLogin() {
     console.log(usernameRef.current.value);
     console.log(passwordRef.current.value);
+    setUsername(usernameRef.current.value);
+    setProfileType("employer");
     router.push("/employer_profile/" + usernameRef.current.value);
   }
 
   function checkDriverLogin() {
     console.log(usernameRef.current.value);
     console.log(passwordRef.current.value);
+    setUsername(usernameRef.current.value);
+    setProfileType("driver");
     router.push("/driver_profile/" + usernameRef.current.value);
   }
 
