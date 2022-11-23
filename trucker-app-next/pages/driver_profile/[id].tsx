@@ -13,11 +13,11 @@ const fetcher = async (url: string) => {
   return data;
 };
 
-const Employer_Profile = () => {
+const Driver_Profile = () => {
   const router = useRouter();
   const { query } = useRouter();
   const { data, error } = useSWR(
-    () => query.id && `/api/employer_profile/${query.id}`,
+    () => query.id && `/api/driver_profile/${query.id}`,
     fetcher
   );
 
@@ -26,22 +26,33 @@ const Employer_Profile = () => {
 
   return (
     <>
-      <br></br>
-      <Link href="/">Click me to Go Home</Link>
+      <h1 className="text-3xl text-yellow-400 font-bold underline">
+        Driver Profile Page
+      </h1>
       <br></br>
       <p>Profile ID: {data.id}</p>
       <p>Name: {data.name}</p>
-      <p>Buisness Type: {data.buisness_type}</p>
+      <p>Truck: {data.truck}</p>
+      <p>Verified: {data.verified}</p>
+      <p>Rating: {data.rating}</p>
       <button
         onClick={() => {
-          router.push("/create_job/");
+          router.push("/job_search/");
         }}
-        className="blue-btn"
+        className="bg-blue-400 text-black-100 font-bold py-2 px-4 rounded border block"
       >
-        Create new job
+        View Job Postings
+      </button>
+      <button
+        onClick={() => {
+          router.push("/");
+        }}
+        className="bg-blue-400 text-black-100 font-bold py-2 px-4 rounded border block"
+      >
+        Go Home
       </button>
     </>
   );
 };
 
-export default Employer_Profile;
+export default Driver_Profile;
