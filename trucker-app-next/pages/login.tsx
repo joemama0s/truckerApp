@@ -1,31 +1,28 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useRef } from "react";
-import { UserContext } from "../lib/context";
+import { UserContextType, UserCtx } from "../lib/context";
 
 export default function Login() {
   const router = useRouter();
   let loading = false;
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  const { username, setUsername, profileType, setProfileType } =
-    useContext(UserContext);
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const { saveUsername, saveProfileType, username, profileType } = useContext(
+    UserCtx
+  ) as UserContextType;
 
   // TODO Fix red underline
   function checkEmployeeLogin() {
-    console.log(usernameRef.current.value);
-    console.log(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
-    setProfileType("employer");
-    router.push("/employer_profile/" + usernameRef.current.value);
+    saveUsername(usernameRef?.current?.value);
+    saveProfileType("employer");
+    router.push("/employer_profile/" + usernameRef?.current?.value);
   }
 
   function checkDriverLogin() {
-    console.log(usernameRef.current.value);
-    console.log(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
-    setProfileType("driver");
-    router.push("/driver_profile/" + usernameRef.current.value);
+    saveUsername(usernameRef?.current?.value);
+    saveProfileType("driver");
+    router.push("/driver_profile/" + usernameRef?.current?.value);
   }
 
   if (loading) {

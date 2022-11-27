@@ -6,10 +6,12 @@ export default function Create_Job() {
   const addJob = async () => {
     const newJob: Job = {
       id: 3,
-      name: jobName.current.value,
-      starting_location: startingLocation.current.value,
-      ending_location: startingLocation.current.value,
-      employer_id: employerId.current.value,
+      name: jobName.current ? jobName.current : "",
+      starting_location: startingLocation.current
+        ? startingLocation.current
+        : "",
+      ending_location: endingLocation.current ? endingLocation.current : "",
+      employer_id: employerId.current ? employerId.current : -999,
       accepted_by: -999,
     };
     console.log("CREATED NEW JOB LIKE:");

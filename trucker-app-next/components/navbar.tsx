@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { useContext } from "react";
-import { UserContext } from "../lib/context";
+import { UserContextType, UserCtx } from "../lib/context";
 import Image from "next/image";
 
 function Navbar() {
-  const { username, profileType } = useContext(UserContext);
+  const { username, profileType } = useContext(UserCtx) as UserContextType;
 
   return (
     <nav className="navbar">
@@ -26,14 +26,14 @@ function Navbar() {
             </li>
             <li className="text-white">
               <p>
-                Logged in as {username} with profile '{profileType}'
+                Logged in as {username} with profile {profileType}
               </p>
             </li>
           </>
         )}
 
         {/* user is not signed OR has not created username */}
-        {!username && (
+        {username && (
           <li>
             <Link href="/login">
               <button className="blue-btn">Log in</button>
