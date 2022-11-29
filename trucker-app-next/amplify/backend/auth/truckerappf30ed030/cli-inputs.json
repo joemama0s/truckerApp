@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "truckerappf30ed030_identitypool_f30ed030",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "truckef30ed030",
+    "userPoolName": "truckerappf30ed030_userpool_f30ed030",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "truckef30ed030_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "f30ed030",
+    "resourceName": "truckerappf30ed030",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "default",
+    "usernameAttributes": [
+      "email, phone_number"
+    ],
+    "triggers": {},
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

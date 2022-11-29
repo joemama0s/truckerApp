@@ -1,6 +1,6 @@
 import { NextApiResponse, NextApiRequest } from "next";
-import { Employer_Profiles } from "../../../tmp_db";
-import { Employer_Profile } from "../../../interfaces/employer_profile";
+import { Employer_Profiles } from "../../../../tmp_db";
+import { Employer_Profile } from "../../../../interfaces/employer_profile";
 
 export default function handler(
   _req: NextApiRequest,

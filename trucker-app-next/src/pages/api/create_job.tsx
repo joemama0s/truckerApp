@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Job } from "../../interfaces/job";
+import { Job } from "../../../interfaces/job";
 
 type ResponseError = {
   message: string;

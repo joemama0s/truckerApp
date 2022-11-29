@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Jobs } from "../../../tmp_db";
-import { Job } from "../../../interfaces/job";
+import { Jobs } from "../../../../tmp_db";
+import { Job } from "../../../../interfaces/job";
 
 type ResponseError = {
   message: string;

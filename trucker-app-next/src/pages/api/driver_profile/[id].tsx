@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Driver_Profiles } from "../../../tmp_db";
-import { Driver_Profile } from "../../../interfaces/driver_profile";
+import { Driver_Profiles } from "../../../../tmp_db";
+import { Driver_Profile } from "../../../../interfaces/driver_profile";
 
 type ResponseError = {
   message: string;

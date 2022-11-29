@@ -1,6 +1,6 @@
 import { NextApiResponse, NextApiRequest } from "next";
-import { Driver_Profiles } from "../../../tmp_db";
-import { Driver_Profile } from "../../../interfaces/driver_profile";
+import { Driver_Profiles } from "../../../../tmp_db";
+import { Driver_Profile } from "../../../../interfaces/driver_profile";
 
 export default function handler(
   _req: NextApiRequest,

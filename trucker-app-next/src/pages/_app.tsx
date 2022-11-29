@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { UserCtx } from "../lib/context";
-import Navbar from "../components/navbar";
+import { UserCtx } from "../../lib/context";
+import Navbar from "../../components/navbar";
 import { createContext, useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import { Job } from "../interfaces/job";
+import { Job } from "../../interfaces/job";
 
 export default function Create_Job() {
   const addJob = async () => {

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import Job_Table from "../components/job_table";
-import { Jobs } from "../tmp_db";
+import Job_Table from "../../components/job_table";
+import { Jobs } from "../../tmp_db";
 
 export default function Job_Search() {
   const getHeadings = () => {

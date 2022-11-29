@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useRef } from "react";
-import { UserContextType, UserCtx } from "../lib/context";
+import { UserContextType, UserCtx } from "../../lib/context";
+import { Auth } from "aws-amplify";
 
 export default function Login() {
   const router = useRouter();
@@ -23,6 +24,30 @@ export default function Login() {
     saveUsername(usernameRef?.current?.value);
     saveProfileType("driver");
     router.push("/driver_profile/" + usernameRef?.current?.value);
+  }
+
+  async function signUp() {
+    try {
+      const username = usernameRef?.current?.value;
+      const password = passwordRef?.current?.value;
+      // TODO add email input
+      const email = "test@gmail.com";
+
+      const { user } = await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email, // optional
+        },
+        autoSignIn: {
+          // optional - enables auto sign in after user is confirmed
+          enabled: true,
+        },
+      });
+      console.log(user);
+    } catch (error) {
+      console.log("error signing up:", error);
+    }
   }
 
   if (loading) {
@@ -63,6 +88,12 @@ export default function Login() {
             className="bg-blue-300 text-white-100 font-bold py-2 px-4 rounded border block mx-auto w-full"
           >
             Sign in as employer
+          </button>
+          <button
+            onClick={signUp}
+            className="bg-blue-300 text-white-100 font-bold py-2 px-4 rounded border block mx-auto w-full"
+          >
+            Sign Up
           </button>
         </div>
       </div>

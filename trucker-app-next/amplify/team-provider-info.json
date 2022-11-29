@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-truckerapp-dev-193637-authRole",
+      "UnauthRoleArn": "arn:aws:iam::120755199817:role/amplify-truckerapp-dev-193637-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::120755199817:role/amplify-truckerapp-dev-193637-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-truckerapp-dev-193637-deployment",
+      "UnauthRoleName": "amplify-truckerapp-dev-193637-unauthRole",
+      "StackName": "amplify-truckerapp-dev-193637",
+      "StackId": "arn:aws:cloudformation:us-east-1:120755199817:stack/amplify-truckerapp-dev-193637/7c6cc830-6ec5-11ed-88df-129d01248363",
+      "AmplifyAppId": "d18isoe5aixayf"
+    },
+    "categories": {
+      "auth": {
+        "truckerappf30ed030": {}
+      },
+      "api": {
+        "truckerappApi": {}
+      }
+    }
+  }
+}

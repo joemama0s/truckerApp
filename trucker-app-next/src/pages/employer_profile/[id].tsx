@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Job_Table from "../../components/job_table";
-import { Jobs } from "../../tmp_db";
+import Job_Table from "../../../components/job_table";
+import { Jobs } from "../../../tmp_db";
 
 const fetcher = async (url: string) => {
   console.log(url);

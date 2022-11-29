@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "truckerappApi",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 360,
+      "apiKeyExpirationDate": "2023-11-23T02:41:50.700Z",
+      "keyDescription": "api key"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authtruckerappf30ed030"
+      }
+    ]
+  }
+}
