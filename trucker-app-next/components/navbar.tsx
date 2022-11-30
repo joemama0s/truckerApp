@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { useContext } from "react";
-import { UserContextType, UserCtx } from "../lib/context";
+import { useUser } from "../src/lib/auth_context";
 import Image from "next/image";
 
 function Navbar() {
-  const { username, profileType } = useContext(UserCtx) as UserContextType;
+  const { user, setUser } = useUser();
+  const username = "idk";
+  const profileType = "idk again";
 
   return (
     <nav className="navbar">

@@ -3,10 +3,7 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Jobs
-  @model
-  # TODO come back to update rules for non owners
-  @auth(rules: [{ allow: owner, operations: [create, update, delete, read] }]) {
+type Job @model {
   id: ID!
   name: String!
   startingLocation: String!

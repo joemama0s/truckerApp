@@ -2,20 +2,20 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateJobsInput = {
+export type CreateJobInput = {
   id?: string | null,
   name: string,
   startingLocation: string,
   endingLocation: string,
 };
 
-export type ModelJobsConditionInput = {
+export type ModelJobConditionInput = {
   name?: ModelStringInput | null,
   startingLocation?: ModelStringInput | null,
   endingLocation?: ModelStringInput | null,
-  and?: Array< ModelJobsConditionInput | null > | null,
-  or?: Array< ModelJobsConditionInput | null > | null,
-  not?: ModelJobsConditionInput | null,
+  and?: Array< ModelJobConditionInput | null > | null,
+  or?: Array< ModelJobConditionInput | null > | null,
+  not?: ModelJobConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -58,36 +58,35 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Jobs = {
-  __typename: "Jobs",
+export type Job = {
+  __typename: "Job",
   id: string,
   name: string,
   startingLocation: string,
   endingLocation: string,
   createdAt: string,
   updatedAt: string,
-  owner?: string | null,
 };
 
-export type UpdateJobsInput = {
+export type UpdateJobInput = {
   id: string,
   name?: string | null,
   startingLocation?: string | null,
   endingLocation?: string | null,
 };
 
-export type DeleteJobsInput = {
+export type DeleteJobInput = {
   id: string,
 };
 
-export type ModelJobsFilterInput = {
+export type ModelJobFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   startingLocation?: ModelStringInput | null,
   endingLocation?: ModelStringInput | null,
-  and?: Array< ModelJobsFilterInput | null > | null,
-  or?: Array< ModelJobsFilterInput | null > | null,
-  not?: ModelJobsFilterInput | null,
+  and?: Array< ModelJobFilterInput | null > | null,
+  or?: Array< ModelJobFilterInput | null > | null,
+  not?: ModelJobFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -106,19 +105,19 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelJobsConnection = {
-  __typename: "ModelJobsConnection",
-  items:  Array<Jobs | null >,
+export type ModelJobConnection = {
+  __typename: "ModelJobConnection",
+  items:  Array<Job | null >,
   nextToken?: string | null,
 };
 
-export type ModelSubscriptionJobsFilterInput = {
+export type ModelSubscriptionJobFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
   startingLocation?: ModelSubscriptionStringInput | null,
   endingLocation?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionJobsFilterInput | null > | null,
-  or?: Array< ModelSubscriptionJobsFilterInput | null > | null,
+  and?: Array< ModelSubscriptionJobFilterInput | null > | null,
+  or?: Array< ModelSubscriptionJobFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -151,150 +150,139 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type CreateJobsMutationVariables = {
-  input: CreateJobsInput,
-  condition?: ModelJobsConditionInput | null,
+export type CreateJobMutationVariables = {
+  input: CreateJobInput,
+  condition?: ModelJobConditionInput | null,
 };
 
-export type CreateJobsMutation = {
-  createJobs?:  {
-    __typename: "Jobs",
+export type CreateJobMutation = {
+  createJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type UpdateJobsMutationVariables = {
-  input: UpdateJobsInput,
-  condition?: ModelJobsConditionInput | null,
+export type UpdateJobMutationVariables = {
+  input: UpdateJobInput,
+  condition?: ModelJobConditionInput | null,
 };
 
-export type UpdateJobsMutation = {
-  updateJobs?:  {
-    __typename: "Jobs",
+export type UpdateJobMutation = {
+  updateJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type DeleteJobsMutationVariables = {
-  input: DeleteJobsInput,
-  condition?: ModelJobsConditionInput | null,
+export type DeleteJobMutationVariables = {
+  input: DeleteJobInput,
+  condition?: ModelJobConditionInput | null,
 };
 
-export type DeleteJobsMutation = {
-  deleteJobs?:  {
-    __typename: "Jobs",
+export type DeleteJobMutation = {
+  deleteJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type GetJobsQueryVariables = {
+export type GetJobQueryVariables = {
   id: string,
 };
 
-export type GetJobsQuery = {
-  getJobs?:  {
-    __typename: "Jobs",
+export type GetJobQuery = {
+  getJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
 export type ListJobsQueryVariables = {
-  filter?: ModelJobsFilterInput | null,
+  filter?: ModelJobFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
 export type ListJobsQuery = {
   listJobs?:  {
-    __typename: "ModelJobsConnection",
+    __typename: "ModelJobConnection",
     items:  Array< {
-      __typename: "Jobs",
+      __typename: "Job",
       id: string,
       name: string,
       startingLocation: string,
       endingLocation: string,
       createdAt: string,
       updatedAt: string,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
 };
 
-export type OnCreateJobsSubscriptionVariables = {
-  filter?: ModelSubscriptionJobsFilterInput | null,
-  owner?: string | null,
+export type OnCreateJobSubscriptionVariables = {
+  filter?: ModelSubscriptionJobFilterInput | null,
 };
 
-export type OnCreateJobsSubscription = {
-  onCreateJobs?:  {
-    __typename: "Jobs",
+export type OnCreateJobSubscription = {
+  onCreateJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type OnUpdateJobsSubscriptionVariables = {
-  filter?: ModelSubscriptionJobsFilterInput | null,
-  owner?: string | null,
+export type OnUpdateJobSubscriptionVariables = {
+  filter?: ModelSubscriptionJobFilterInput | null,
 };
 
-export type OnUpdateJobsSubscription = {
-  onUpdateJobs?:  {
-    __typename: "Jobs",
+export type OnUpdateJobSubscription = {
+  onUpdateJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type OnDeleteJobsSubscriptionVariables = {
-  filter?: ModelSubscriptionJobsFilterInput | null,
-  owner?: string | null,
+export type OnDeleteJobSubscriptionVariables = {
+  filter?: ModelSubscriptionJobFilterInput | null,
 };
 
-export type OnDeleteJobsSubscription = {
-  onDeleteJobs?:  {
-    __typename: "Jobs",
+export type OnDeleteJobSubscription = {
+  onDeleteJob?:  {
+    __typename: "Job",
     id: string,
     name: string,
     startingLocation: string,
     endingLocation: string,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };

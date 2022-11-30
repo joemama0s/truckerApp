@@ -1,51 +1,13 @@
 {
-  "api": {
-    "truckerappApi": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "truckerappf30ed030",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 360,
-              "apiKeyExpirationDate": "2023-11-23T02:41:50.700Z",
-              "description": "api key"
-            }
-          },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authtruckerappf30ed030"
-              }
-            }
-          ]
-        }
-      }
-    }
-  },
   "auth": {
-    "truckerappf30ed030": {
+    "truckerappnext561af82d": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL",
-          "PHONE_NUMBER"
-        ],
+        "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -60,6 +22,41 @@
         "verificationMechanisms": [
           "EMAIL"
         ]
+      }
+    }
+  },
+  "api": {
+    "truckerappnext": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "truckerappnext561af82d",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2023-11-30T02:48:04.355Z",
+              "description": "this is the api key"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authtruckerappnext561af82d"
+              }
+            }
+          ]
+        }
       }
     }
   }

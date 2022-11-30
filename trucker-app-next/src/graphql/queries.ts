@@ -2,22 +2,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getJobs = /* GraphQL */ `
-  query GetJobs($id: ID!) {
-    getJobs(id: $id) {
+export const getJob = /* GraphQL */ `
+  query GetJob($id: ID!) {
+    getJob(id: $id) {
       id
       name
       startingLocation
       endingLocation
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const listJobs = /* GraphQL */ `
   query ListJobs(
-    $filter: ModelJobsFilterInput
+    $filter: ModelJobFilterInput
     $limit: Int
     $nextToken: String
   ) {
@@ -29,7 +28,6 @@ export const listJobs = /* GraphQL */ `
         endingLocation
         createdAt
         updatedAt
-        owner
       }
       nextToken
     }

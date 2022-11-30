@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "truckerappApi",
+  "AppSyncApiName": "truckerappnext",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authtruckerappf30ed030",
+      "authtruckerappnext561af82d",
       "Outputs.UserPoolId"
     ]
   }

@@ -2,51 +2,48 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createJobs = /* GraphQL */ `
-  mutation CreateJobs(
-    $input: CreateJobsInput!
-    $condition: ModelJobsConditionInput
+export const createJob = /* GraphQL */ `
+  mutation CreateJob(
+    $input: CreateJobInput!
+    $condition: ModelJobConditionInput
   ) {
-    createJobs(input: $input, condition: $condition) {
+    createJob(input: $input, condition: $condition) {
       id
       name
       startingLocation
       endingLocation
       createdAt
       updatedAt
-      owner
     }
   }
 `;
-export const updateJobs = /* GraphQL */ `
-  mutation UpdateJobs(
-    $input: UpdateJobsInput!
-    $condition: ModelJobsConditionInput
+export const updateJob = /* GraphQL */ `
+  mutation UpdateJob(
+    $input: UpdateJobInput!
+    $condition: ModelJobConditionInput
   ) {
-    updateJobs(input: $input, condition: $condition) {
+    updateJob(input: $input, condition: $condition) {
       id
       name
       startingLocation
       endingLocation
       createdAt
       updatedAt
-      owner
     }
   }
 `;
-export const deleteJobs = /* GraphQL */ `
-  mutation DeleteJobs(
-    $input: DeleteJobsInput!
-    $condition: ModelJobsConditionInput
+export const deleteJob = /* GraphQL */ `
+  mutation DeleteJob(
+    $input: DeleteJobInput!
+    $condition: ModelJobConditionInput
   ) {
-    deleteJobs(input: $input, condition: $condition) {
+    deleteJob(input: $input, condition: $condition) {
       id
       name
       startingLocation
       endingLocation
       createdAt
       updatedAt
-      owner
     }
   }
 `;
