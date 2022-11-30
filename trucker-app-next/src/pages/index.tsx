@@ -14,6 +14,14 @@ export default function Home() {
       >
         Login
       </button>
+      <button
+        onClick={() => {
+          router.push("/signup");
+        }}
+        className="blue-btn"
+      >
+        Sign Up
+      </button>
     </div>
   );
 }
