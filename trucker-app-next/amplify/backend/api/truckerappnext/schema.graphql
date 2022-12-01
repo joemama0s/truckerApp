@@ -3,9 +3,31 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Job @model {
+type Profile
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, update, delete, read] }
+      { allow: private, operations: [create, update, delete, read] }
+      { allow: public, operations: [create, update, delete, read] }
+    ]
+  )
+  @searchable {
   id: ID!
+  subID: String!
   name: String!
-  startingLocation: String!
-  endingLocation: String!
+}
+type Job
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, update, delete, read] }
+      { allow: private, operations: [create, update, delete, read] }
+      { allow: public, operations: [create, update, delete, read] }
+    ]
+  )
+  @searchable {
+  id: ID!
+  subId: String!
+  name: String!
 }

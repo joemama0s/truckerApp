@@ -63,6 +63,7 @@ function Signup() {
   }
 
   async function signUp() {
+    // TODO I DONT LOVE THIS
     const usernameValue = usernameRef?.current?.value
       ? usernameRef?.current?.value
       : "";
@@ -95,6 +96,8 @@ function Signup() {
     }
   }
 
+  // TODO This for some reason default signs into joemama???
+  // May need to clear session storage after some amount of time because it may be using stored cookies
   async function verify() {
     const code = verificationRef?.current?.value
       ? verificationRef?.current?.value
@@ -109,6 +112,7 @@ function Signup() {
     }
   }
 
+  // TODO CONVERT THIS TO A SPINNER OR SOMETHING AND MAKE THIS ACTUALLY WORK
   if (loading) {
     return <h1>Loading...</h1>;
   }

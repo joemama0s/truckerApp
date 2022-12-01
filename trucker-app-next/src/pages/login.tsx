@@ -7,12 +7,14 @@ import { CognitoUser } from "@aws-amplify/auth";
 
 export default function Login() {
   const router = useRouter();
+
   let loading = false;
+
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const verificationRef = useRef<HTMLInputElement>(null);
-  const [enteringCode, setEnteringCode] = useState<boolean>(false);
+
   const [errorString, setErrorString] = useState<string>("");
+  // TODO USE THIS SO IF THEY CLICK LOGIN WHILE SIGNED IN, IT WILL JUST TAKE THEM TO PROFILE
   const { user, setUser } = useUser();
 
   function getErrorMessage(error: unknown) {
@@ -37,6 +39,7 @@ export default function Login() {
   // throw new Error("Please Select Profile Type");
   async function submitLogin() {
     try {
+      // TODO I DONT LOVE THIS
       const usernameValue = usernameRef?.current?.value
         ? usernameRef?.current?.value
         : "";
@@ -46,21 +49,22 @@ export default function Login() {
       const amplifyUser = await Auth.signIn(usernameValue, passwordValue);
       console.log("Success! Verified User");
     } catch (error) {
+      // TODO ADD ERROR LOGGING TO USER
       console.log("Error verifying: ", error);
       reportError({ message: getErrorMessage(error) });
     }
   }
 
+  // TODO CONVERT THIS TO A SPINNER OR SOMETHING AND MAKE IT ACTUALLY WORK
   if (loading) {
     return <h1>Loading...</h1>;
   }
-  console.log(enteringCode);
   return (
     <div>
       <h1 className="text-3xl text-yellow-400 font-bold underline">
         Login Page!
       </h1>
-      <p>DEBUG: useername: tylerquast password: joemama23</p>
+      <p>DEBUG: useername: joemama password: joemama23</p>
       <div className="container">
         <div className="bg-blue-300 text-center w-1/3 px-3 py-4 text-white-100 mx-auto rounded">
           <input
