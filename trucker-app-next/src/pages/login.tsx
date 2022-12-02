@@ -48,6 +48,13 @@ export default function Login() {
         : "";
       const amplifyUser = await Auth.signIn(usernameValue, passwordValue);
       console.log("Success! Verified User");
+      if (amplifyUser.attributes["custom:profileType"] === "employer") {
+        router.push("/employer_profile/" + amplifyUser.attributes["sub"]);
+      } else if (amplifyUser.attributes["custom:profileType"]) {
+        router.push("/driver_profile/" + amplifyUser.attributes["sub"]);
+      } else {
+        throw new Error("Unknown profile type");
+      }
     } catch (error) {
       // TODO ADD ERROR LOGGING TO USER
       console.log("Error verifying: ", error);
