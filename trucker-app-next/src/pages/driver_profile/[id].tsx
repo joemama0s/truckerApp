@@ -1,28 +1,49 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useSWR from "swr";
-
-const fetcher = async (url: string) => {
-  console.log(url);
-  const res = await fetch(url);
-  const data = await res.json();
-
-  if (res.status !== 200) {
-    throw new Error(data.message);
-  }
-  return data;
-};
+import { useEffect, useState } from "react";
+import { ListProfilesQuery, Profile } from "../../API";
+import { listProfiles, searchProfiles } from "../../graphql/queries";
+import { API } from "aws-amplify";
 
 const Driver_Profile = () => {
   const router = useRouter();
   const { query } = useRouter();
-  const { data, error } = useSWR(
-    () => query.id && `/api/driver_profile/${query.id}`,
-    fetcher
-  );
+  const [apiProfile, setApiProfile] = useState<Profile[]>([]);
 
-  if (error) return <div>{error.message}</div>;
-  if (!data) return <div>Loading...</div>;
+  useEffect(() => {
+    if (!query.id) {
+      return;
+    }
+    let filter = {
+      subID: {
+        eq: query.id,
+      },
+    };
+    const getProfileFromApi = async (): Promise<Profile[]> => {
+      const userProfile = (await API.graphql({
+        query: listProfiles,
+        variables: { filter: filter },
+      })) as {
+        data: ListProfilesQuery;
+        errors: any[];
+      };
+
+      if (userProfile.data.listProfiles?.items) {
+        return userProfile.data.listProfiles.items as Profile[];
+      } else {
+        throw new Error("Could not get profile from api");
+      }
+    };
+
+    getProfileFromApi().then((data) => setApiProfile(data));
+  }, [query.id]);
+
+  // if (error) return <div>{error.message}</div>;
+  // if (!data) return <div>Loading...</div>;
+
+  if (apiProfile.length == 0) {
+    return <h1>LOADING</h1>;
+  }
 
   return (
     <>
@@ -30,11 +51,10 @@ const Driver_Profile = () => {
         Driver Profile Page
       </h1>
       <br></br>
-      <p>Profile ID: {data.id}</p>
-      <p>Name: {data.name}</p>
-      <p>Truck: {data.truck}</p>
-      <p>Verified: {data.verified}</p>
-      <p>Rating: {data.rating}</p>
+
+      {/* TODO I hate this indexing.... Change it */}
+      <p>Profile ID: {apiProfile[0].subID}</p>
+      <p>Name: {apiProfile[0].name}</p>
       <button
         onClick={() => {
           router.push("/job_search/");

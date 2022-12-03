@@ -1,4 +1,3 @@
-// TODO FIX SQUIGLIES
 export default function Job_Table({
   theadData,
   tbodyData,
@@ -7,6 +6,7 @@ export default function Job_Table({
   tbodyData: Object[];
 }) {
   return (
+    // TODO FIX I BROKE LOL
     <h1> ***table will go here. I broke it lol*** </h1>
     // <table className="border-separate border-spacing-2 border border-slate-400">
     //   <thead>

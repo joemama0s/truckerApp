@@ -15,7 +15,6 @@ export default function Job_Search() {
       <Job_Table theadData={getHeadings()} tbodyData={Jobs} />
       <button
         onClick={() => {
-          // TODO There needs to be global login implementation to store what profile the user has
           router.push("/driver_profile/1");
         }}
         className="blue-btn "

@@ -44,8 +44,8 @@ export default function AuthContext({ children }: Props): ReactElement {
     } catch {
       setUser(null);
     }
-    console.log("Current signed in user is: ", user);
   }
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

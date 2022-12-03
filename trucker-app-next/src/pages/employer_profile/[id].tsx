@@ -9,7 +9,6 @@ import { ListProfilesQuery, Profile } from "../../API";
 import { listProfiles, searchProfiles } from "../../graphql/queries";
 
 const fetcher = async (url: string) => {
-  console.log(url);
   const res = await fetch(url);
   const data = await res.json();
 
@@ -64,6 +63,7 @@ const Employer_Profile = () => {
       <br></br>
       <Link href="/">Click me to Go Home</Link>
       <br></br>
+      {/* TODO I hate this indexing at 0... Change it */}
       <p>Profile ID: {apiProfile[0].subID}</p>
       <p>Name: {apiProfile[0].name}</p>
       <h1> Current Outstanding Jobs </h1>

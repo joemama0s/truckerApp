@@ -7,7 +7,7 @@ import Select from "react-select";
 function Signup() {
   const options = [
     { value: "driver", label: "Driver" },
-    { value: "employee", label: "Employee" },
+    { value: "employer", label: "Employer" },
   ];
 
   const { user, setUser } = useUser();
@@ -85,13 +85,10 @@ function Signup() {
           enabled: true,
         },
       });
-      console.log(user);
-      console.log("Successfully added user");
       setInputUsername(usernameValue);
       setInputPassword(passwordValue);
       setInputEmail(emailValue);
     } catch (error) {
-      console.log("error signing up:", error);
       throw error;
     }
   }
@@ -105,9 +102,7 @@ function Signup() {
     try {
       await Auth.confirmSignUp(inputUsername, code);
       const amplifyUser = await Auth.signIn(inputUsername, inputPassword);
-      console.log("Success! Verified User");
     } catch (error) {
-      console.log("Error verifying: ", error);
       reportError({ message: getErrorMessage(error) });
     }
   }

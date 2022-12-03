@@ -14,8 +14,6 @@ export default function Create_Job() {
       employer_id: employerId.current ? employerId.current : -999,
       accepted_by: -999,
     };
-    console.log("CREATED NEW JOB LIKE:");
-    console.log(newJob);
     const resp = await fetch("/api/create_job", {
       method: "POST",
       body: JSON.stringify({ newJob }),
@@ -24,8 +22,6 @@ export default function Create_Job() {
       },
     });
     const data = await resp.json();
-    console.log("DATA");
-    console.log(data);
     setJobCreated(true);
   };
   const [jobCreated, setJobCreated] = useState(false);

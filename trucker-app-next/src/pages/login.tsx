@@ -14,7 +14,6 @@ export default function Login() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const [errorString, setErrorString] = useState<string>("");
-  // TODO USE THIS SO IF THEY CLICK LOGIN WHILE SIGNED IN, IT WILL JUST TAKE THEM TO PROFILE
   const { user, setUser } = useUser();
 
   function getErrorMessage(error: unknown) {
@@ -47,7 +46,6 @@ export default function Login() {
         ? passwordRef?.current?.value
         : "";
       const amplifyUser = await Auth.signIn(usernameValue, passwordValue);
-      console.log("Success! Verified User");
       if (amplifyUser.attributes["custom:profileType"] === "employer") {
         router.push("/employer_profile/" + amplifyUser.attributes["sub"]);
       } else if (amplifyUser.attributes["custom:profileType"]) {
@@ -57,7 +55,6 @@ export default function Login() {
       }
     } catch (error) {
       // TODO ADD ERROR LOGGING TO USER
-      console.log("Error verifying: ", error);
       reportError({ message: getErrorMessage(error) });
     }
   }
