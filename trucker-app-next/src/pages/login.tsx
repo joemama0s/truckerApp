@@ -31,7 +31,9 @@ export default function Login() {
     } catch (err) {
       console.error(err);
       reportError({ message: getErrorMessage(err) });
+      setLoading(false);
     }
+    setLoading(false);
   }
 
   // TODO USE THIS FOR MORE OPTIMIZED ERROR LOGGING
@@ -48,7 +50,9 @@ export default function Login() {
         : "";
       const amplifyUser = await Auth.signIn(usernameValue, passwordValue);
       console.log(amplifyUser);
-      if (amplifyUser.attributes["custom:profileType"] === "employer") {
+      console.log(amplifyUser.attributes["custom:profileType"]);
+      // TODO This should be employer. Remove this and make it imployer
+      if (amplifyUser.attributes["custom:profileType"] === "employee") {
         router.push("/employer_profile/" + amplifyUser.attributes["sub"]);
       } else if (amplifyUser.attributes["custom:profileType"] === "driver") {
         router.push("/driver_profile/" + amplifyUser.attributes["sub"]);

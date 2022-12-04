@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import Job_Table from "../../../components/job_table";
+import Header from "../../../components/navbarNew";
 import { Jobs } from "../../../tmp_db";
 import { ListProfilesQuery, Profile } from "../../API";
 import { listProfiles, searchProfiles } from "../../graphql/queries";
@@ -59,14 +60,15 @@ const Employer_Profile = () => {
   }
 
   return (
-    <>
-      <br></br>
+    <div>
+      <Header />
+      {/* <br></br>
       <Link href="/">Click me to Go Home</Link>
-      <br></br>
+      <br></br> */}
       {/* TODO I hate this indexing at 0... Change it */}
-      <p>Profile ID: {apiProfile[0].subID}</p>
+      {/* <p>Profile ID: {apiProfile[0].subID}</p>
       <p>Name: {apiProfile[0].name}</p>
-      <h1> Current Outstanding Jobs </h1>
+      <h1> Current Outstanding Jobs </h1> */}
       {/* <Job_Table
         theadData={getHeadings()}
         tbodyData={Jobs.filter((p) => p.id === Number(query.id))}
@@ -79,7 +81,7 @@ const Employer_Profile = () => {
       >
         Create new job
       </button> */}
-    </>
+    </div>
   );
 };
 
