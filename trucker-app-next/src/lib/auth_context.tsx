@@ -18,7 +18,7 @@ interface UserContextType {
 const UserContext = createContext<UserContextType>({} as UserContextType);
 
 interface Props {
-  children: React.ReactElement[];
+  children: React.ReactElement;
 }
 
 export default function AuthContext({ children }: Props): ReactElement {
